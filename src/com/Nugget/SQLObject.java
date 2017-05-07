@@ -5,12 +5,12 @@ package com.Nugget;
 import java.sql.*;
 
 
-public class GetData {
+public class SQLObject {
 
     /**
      * Connect to a sample database
      */
-    public static void connect() {
+    protected static void sqlGetData(String getQuery) {
         Connection conn = null;
         try {
             // db parameters
@@ -18,7 +18,7 @@ public class GetData {
             // create a connection to the database
             conn = DriverManager.getConnection(url);
 
-            System.out.println("Connection to SQLite has been established.");
+            //System.out.println("Connection to SQLite has been established.");
             String query = "SELECT * from character_";
             Statement st = conn.createStatement();
             ResultSet rs = st.executeQuery(query);
@@ -40,9 +40,8 @@ public class GetData {
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) {
-        connect();
 
 
-    }
+
+
 }

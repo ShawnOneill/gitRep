@@ -48,6 +48,6 @@ public class BuildUser {
         }
         //TODO handle other questions
         System.out.println(BaseClass.rand50());
-
+        SQLObject.sendSQLData(userName, thing);
     }
 }

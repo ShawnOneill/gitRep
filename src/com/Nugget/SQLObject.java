@@ -7,13 +7,22 @@ import java.sql.*;
 
 public class SQLObject {
 
+
     public static void main(String[] arg){
-       sqlGetData();
-        //inputData();
+
+
+        String inputChar = "Robert5";
+        String inputClass = "Robot5";
+        new  SQLObject().inputNewChar(inputChar, inputClass);
     }
     /**
      * Connect to a sample database
      */
+
+    public static void sendSQLData(String inputChar, String inputClass){
+        new SQLObject().inputNewChar(inputChar, inputClass);
+    }
+
     protected static void sqlGetData() {
         Connection conn = null;
         try {
@@ -41,16 +50,20 @@ public class SQLObject {
             }
         }
     }
+        private String newChar(String inputChar, String inputClass){
+        String newChar;
+        newChar = "INSERT INTO character_ (charName, charClass) VALUES "+"('"+inputChar+"', '"+inputClass+"')";
 
+        return newChar;
 
-        public static void inputData() {
+        }
+
+        public  void inputNewChar(String inputChar, String inputClass) {
             try {
                 String url = "jdbc:sqlite:C:/Users/Shawn/SQL/localSQL.db";
                 Connection conn = DriverManager.getConnection(url);
                 Statement st = conn.createStatement();
-                System.out.println("Connection to SQLite has been established.");
-                st.executeUpdate("INSERT INTO character_ (charName, charClass) VALUES ('Seamus', 'Human')");
-
+                st.executeUpdate(newChar(inputChar, inputClass));
 
                 conn.close();
             } catch (Exception e) {
